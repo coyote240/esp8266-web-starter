@@ -18,6 +18,10 @@ these instructions:
 
 https://arduino.github.io/arduino-cli/installation/
 
+In order to build the LittleFS filesystem, you will require `mklittlefs`:
+
+https://github.com/earlephilhower/mklittlefs
+
 In order to upload to the flash filesystem on the esp8266, you will also need
 `esptool.py` from espressif:
 
@@ -30,9 +34,14 @@ https://github.com/espressif/esptool
 make build
 ```
 
-
 ### Upload
 
 ```shell
 make upload
+```
+
+### Flash
+
+```shell
+make flash
 ```

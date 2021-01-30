@@ -2,7 +2,7 @@ board_name = esp8266:esp8266:generic
 port = /dev/ttyUSB0
 baud_rate = 115200
 littlefs_address = 0x200000
-build_temp = $(shell mktemp -d)
+build_temp := $(shell mktemp -d)
 
 all: build
 
@@ -14,7 +14,8 @@ upload:
 
 flash:
 	mklittlefs -c ./data $(build_temp)/flash.bin
-	esptool.py -p $(port) -b $(baud_rate)
+	esptool.py -p $(port) -b $(baud_rate) write_flash \
+		$(littlefs_address) $(build_temp)/flash.bin
 
 info:
 	esptool.py -p $(port) -b $(baud_rate) flash_id
